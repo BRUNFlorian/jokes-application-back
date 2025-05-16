@@ -12,7 +12,7 @@ const getAllJokes = (req, res) => {
 
 const getJokeById = (req, res) => {
   const { id } = req.params;
-  connection.qury("SELECT * FROM jokes WHERE id = ?", [id], (err, results) => {
+  connection.query("SELECT * FROM jokes WHERE id = ?", [id], (err, results) => {
     if (err) {
       console.error("Erreur lors de la récupération des blagues", err.message);
       return res.status(500).send("Erreur serveur");
@@ -20,7 +20,7 @@ const getJokeById = (req, res) => {
     if (results.length === 0) {
       return res.status(404).send("Blague non trouvée");
     }
-    res.json(result[0]);
+    res.json(results[0]);
   });
 };
 
