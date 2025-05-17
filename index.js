@@ -4,7 +4,7 @@ const jokeRoutes = require("./routes/jokeRoutes");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const app = express();
-const port = process.env.PORT || 10000;
+const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json()); // Assure-toi que le serveur accepte les requêtes JSON
