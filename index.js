@@ -22,7 +22,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "/api/v1",
+        url: "https://jokes-application-back.onrender.com/api/v1", // L'URL de ton backend sur Render
         description: "Serveur de l'API",
       },
     ],
