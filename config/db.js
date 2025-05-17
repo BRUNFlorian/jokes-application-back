@@ -1,20 +1,14 @@
 const mysql = require("mysql2");
-require("dotenv").config(); // Charge les variables d'environnement depuis .env
+require("dotenv").config();  // Charge les variables d'environnement depuis .env
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST, // Utilise DB_HOST de ton .env
-  user: process.env.DB_USER, // Utilise DB_USER de ton .env
-  password: process.env.DB_PASSWORD, // Utilise DB_PASSWORD de ton .env
-  database: process.env.DB_NAME, // Utilise DB_NAME de ton .env
-  port: process.env.DB_PORT || 3306, // Utilise DB_PORT de ton .env, avec 3306 par défaut
+// Crée un pool de connexions à la base de données
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,       // Hôte de la base de données
+  user: process.env.DB_USER,       // Utilisateur de la base de données
+  password: process.env.DB_PASSWORD, // Mot de passe de la base de données
+  database: process.env.DB_NAME,   // Nom de la base de données
+  port: process.env.DB_PORT || 3306, // Port de la base de données (3306 par défaut)
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.error("Erreur de connexion à MySQL :", err.message);
-    return;
-  }
-  console.log("Connecté à la base de données MySQL !");
-});
-
-module.exports = connection;
+// Exporter le pool pour qu'il soit utilisé dans d'autres fichiers
+module.exports = pool;
