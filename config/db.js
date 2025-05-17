@@ -2,11 +2,11 @@ const mysql = require("mysql2");
 require("dotenv").config(); // Charge les variables d'environnement depuis .env
 
 const connection = mysql.createConnection({
-  host: process.env.MYSQLHOST, // Utilise MYSQLHOST de Render
-  user: process.env.MYSQLUSER, // Utilise MYSQLUSER de Render
-  password: process.env.MYSQLPASSWORD, // Utilise MYSQLPASSWORD de Render
-  database: process.env.MYSQL_DATABASE, // Utilise MYSQL_DATABASE de Render
-  port: process.env.MYSQLPORT || 3306, // Utilise MYSQLPORT, avec 3306 par défaut
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQL_DATABASE,
+  port: process.env.MYSQLPORT || 3306,
 });
 
 connection.connect((err) => {
