@@ -7,7 +7,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -22,8 +22,8 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000/api/v1",
-        description: "Serveur local de développement",
+        url: "/api/v1",
+        description: "Serveur de l'API",
       },
     ],
   },
@@ -43,5 +43,5 @@ app.use("/api/v1", jokeRoutes);
 
 // Lancer le serveur Express
 app.listen(port, () => {
-  console.log(`Serveur démarré sur http://localhost:${port}`);
+  console.log(`Serveur démarré sur le port ${port}`);
 });
