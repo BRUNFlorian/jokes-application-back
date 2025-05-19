@@ -19,7 +19,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "https://jokes-application-back.onrender.com/api/v1", // URL de ton backend sur Render
+        url: "https://jokes-application-back.onrender.com/api/v1", // URL backend sur Render
         description: "Serveur de l'API",
       },
     ],
@@ -32,7 +32,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes principales
 app.get("/", (req, res) => res.send("Le serveur Express fonctionne !"));
-app.use("/api/v1", jokeRoutes); // Intégration des routes
+// Intégration des routes
+app.use("/api/v1", jokeRoutes); 
 
 // Lancer le serveur Express
 app.listen(port, () => {
